@@ -1,7 +1,8 @@
 export interface IRepo {
   id: number;
   repoName: string;
-  pushed_at: string;
+  language: string;
+  pushed_at: Date;
   archived: boolean;
   homepage: string;
 }

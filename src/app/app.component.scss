@@ -1,4 +1,16 @@
-.grid_wrapper{
+.grid_wrapper {
   display: flex;
   justify-content: center;
+}
+
+::ng-deep .dx-data-row + .dx-selection {
+  background-color: bisque;
+
+  color: blue;
+}
+
+::ng-deep .dx-data-row + .dx-state-hover {
+  font-weight: 500;
+  background-color: coral;
+  border: red 0.2 solid;
 }
