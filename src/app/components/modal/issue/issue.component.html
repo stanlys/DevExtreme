@@ -1,0 +1,8 @@
+<div class="issueWrapper">
+  <h4>
+    <img alt="issue" src="assets/event.svg" />{{ issue.title | uppercase }}
+  </h4>
+  <span class="issueDate">{{ issue.created_at | date : "h:mm d MMMM y" }}</span>
+  <p>{{ issue.body | slice : 0 : 200 }}...</p>
+  <hr />
+</div>

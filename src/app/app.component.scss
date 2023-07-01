@@ -4,17 +4,19 @@
 }
 
 ::ng-deep .dx-datagrid-rowsview .dx-selection.dx-row:not(.dx-row-focused) > td {
-  background-color: bisque;
-  color: blue;
+  background-color: rgba(168, 162, 153, 0.4);
+  color: rgb(0, 0, 100);
 }
 
 ::ng-deep .dx-data-row + .dx-state-hover {
   font-weight: 500;
-  background-color: coral !important;
-  border: red 0.2 solid;
+  background-color: rgba(168, 162, 153, 0.8) !important;
 }
 
-::ng-deep .dx-datagrid-rowsview .dx-selection.dx-row:not(.dx-row-focused):hover > td {
+::ng-deep
+  .dx-datagrid-rowsview
+  .dx-selection.dx-row:not(.dx-row-focused):hover
+  > td {
   font-weight: 500;
-  background-color: coral !important;
+  background-color: rgba(168, 162, 153, 0.8);
 }

@@ -1,0 +1,13 @@
+<div class="container">
+  <div *ngIf="issueCount > 0; else noneIssue" class="issueList_wrapper">
+    <div *ngFor="let issue of issueList">
+      <app-issue [issue]="issue"></app-issue>
+    </div>
+  </div>
+</div>
+
+<ng-template #noneIssue>
+  <div class="center">
+    <h2>Issue not found</h2>
+  </div>
+</ng-template>
