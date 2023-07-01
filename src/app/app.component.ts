@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { GetreposService } from './services/getrepos.service';
 import { IRepo, IRepos } from './interfaces';
+import { Octokit } from 'octokit';
+import { HomepagelinkComponent } from './components/homepagelink/homepagelink.component';
 
 @Component({
   selector: 'app-root',
@@ -41,6 +43,14 @@ export class AppComponent {
     console.log(this.repos);
   }
 
+  async helloWorld2() {
+    const octokit = new Octokit({
+      auth: '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',
+    });
+    const a = await octokit.request('GET /users/stanlys/repos', {});
+    console.log(a);
+  }
+
   showDialog() {
     this.popupVisible = !this.popupVisible;
   }
@@ -55,5 +65,10 @@ export class AppComponent {
 
   isArchive(value: boolean): string {
     return value ? 'Да' : 'Нет';
+  }
+
+  homePage(value: any) {
+    console.log(value);
+    return HomepagelinkComponent;
   }
 }

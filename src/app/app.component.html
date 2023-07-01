@@ -5,6 +5,8 @@
     src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg=="
   />
 
+  <dx-button text="Repos" (onClick)="helloWorld2()" type="success"> </dx-button>
+
   <dx-button text="Click me" (onClick)="helloWorld()" type="success">
   </dx-button>
   <dx-button text="Popup" (onClick)="showDialog()" type="warn"> </dx-button>
@@ -13,13 +15,14 @@
       #grid
       [dataSource]="repos"
       [columns]="['name', 'language', 'pushed_at', 'archived', 'homepage']"
-      [showBorders]="true"
+      [showBorders]="false"
       keyExpr="id"
+      [hoverStateEnabled]="true"
       (onRowDblClick)="dblClick($event)"
     >
       <dxo-header-filter [visible]="true"></dxo-header-filter>
       <dxo-sorting mode="single"></dxo-sorting>
-      <dxo-selection mode="single"></dxo-selection>
+      <dxo-selection mode="single" [deferred]="false"></dxo-selection>
       <dxo-load-panel [enabled]="true"> </dxo-load-panel>
       <dxi-column
         dataField="name"
@@ -33,7 +36,7 @@
       ></dxi-column>
       <dxi-column
         dataField="pushed_at"
-        format="dd,MM,yyyy, h:mm"
+        format="dd.MM.yyyy, h:mm"
         caption="Дата Push"
         dataType="datetime"
       ></dxi-column>
@@ -48,7 +51,20 @@
         caption="Домашняя страница"
         dataType="string"
         [allowSorting]="false"
+        cellTemplate="HomePage"
       ></dxi-column>
+      <div *dxTemplate="let homepagelink of 'HomePage'">
+        <a
+          *ngIf="homepagelink.value; else unset"
+          target="_blank"
+          href="{{ homepagelink.value }}"
+        >
+          HomePage link
+        </a>
+        <ng-template #unset>
+          <span> None </span>
+        </ng-template>
+      </div>
       <dxo-paging [pageSize]="10"></dxo-paging>
       <dxo-pager
         [visible]="true"

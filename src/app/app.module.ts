@@ -10,9 +10,10 @@ import {
 } from 'devextreme-angular';
 
 import { HttpClientModule } from '@angular/common/http';
+import { HomepagelinkComponent } from './components/homepagelink/homepagelink.component';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, HomepagelinkComponent],
   imports: [
     BrowserModule,
     DxButtonModule,
