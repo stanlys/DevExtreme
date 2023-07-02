@@ -19,7 +19,7 @@ export class AppComponent implements OnInit {
   @ViewChild('someInput', { static: true })
   someInput: ElementRef<HTMLInputElement>;
 
-  private selectedUser: string = 'stanlys';
+  private selectedUser: string = 'microsoft';
 
   private selectedRepoName: string = '';
 
@@ -51,7 +51,6 @@ export class AppComponent implements OnInit {
       )
       .subscribe((search) => {
         this.selectedUser = search;
-        console.log(this.selectedUser);
         this.getUserRepo();
       });
   }
@@ -63,7 +62,6 @@ export class AppComponent implements OnInit {
       .getRepos(this.selectedUser)
       .subscribe((data: IRepos) => {
         this.repos = data;
-        console.log(this.repos);
         this.loader.hideLoading();
       });
   }
