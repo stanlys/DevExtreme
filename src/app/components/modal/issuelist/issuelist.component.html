@@ -1,10 +1,20 @@
-<div class="container">
-  <div *ngIf="issueCount > 0; else noneIssue" class="issueList_wrapper">
-    <div *ngFor="let issue of issueList">
-      <app-issue [issue]="issue"></app-issue>
+<div *ngIf="loader$ | async; else showIssues" class="loader">
+  <dx-load-indicator
+    id="large-indicator"
+    height="60"
+    width="60"
+  ></dx-load-indicator>
+</div>
+
+<ng-template #showIssues>
+  <div class="container">
+    <div *ngIf="issueCount > 0; else noneIssue" class="issueListWrapper">
+      <div *ngFor="let issue of issueList">
+        <app-issue [issue]="issue"></app-issue>
+      </div>
     </div>
   </div>
-</div>
+</ng-template>
 
 <ng-template #noneIssue>
   <div class="center">
